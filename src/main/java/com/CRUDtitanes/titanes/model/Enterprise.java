@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
+@Table(name="enterprise")
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -18,9 +19,13 @@ public class Enterprise {
     private Long id;
 
     //Atributos
+    @Column(name = "nombre")
     private String nombre;
+    @Column(name = "direccion")
     private String direccion;
+    @Column(name = "telefono")
     private String telefono;
+    @Column(name = "nit")
     private String nit;
 
 
