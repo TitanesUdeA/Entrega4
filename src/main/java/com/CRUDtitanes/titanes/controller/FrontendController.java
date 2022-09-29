@@ -21,10 +21,11 @@ public class FrontendController {
         return "login";
     }
 
-    //Cuando el usuario hace login, se despliega el listado de empresas:
-    @GetMapping("/welcome")
-    public String getWelcome(Model model){
-        return "welcome";
-    }
+
+    //@GetMapping("/welcome")
+    //public String getWelcome(Model model) {
+    //    model.addAttribute("usuarios", gestorUsuario.getUsuarios());
+    //    return "welcome";
+    //}
 
 }

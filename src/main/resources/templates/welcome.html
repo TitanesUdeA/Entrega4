@@ -17,31 +17,35 @@
 
   </form>
 
-  <a href="/addUser">Añadir usuario</a>
+  <!--<a href="/addUser">Añadir usuario</a>-->
+
+  <h2>Listado de empresas</h2>
 
   <table class="table">
     <thead>
     <tr>
+      <th scope="col"></th>
       <th scope="col">Nombre</th>
-      <th scope="col">Nombre Usuario</th>
-      <th scope="col">Password</th>
-      <th scope="col">Acciones</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">NIT</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="usuario : ${usuarios}">
-      <th scope="row">1</th>
-      <td th:text="${usuario.nombre}"></td>
-      <td th:text="${usuario.nombreUsuario}"></td>
-      <td th:text="${usuario.password}"></td>
-      <td>
+    <tr th:each="enterprise : ${enterprises}">
+      <th scope="row"></th>
+      <td th:text="${enterprise.nombre}"></td>
+      <td th:text="${enterprise.direccion}"></td>
+      <td th:text="${enterprise.telefono}"></td>
+      <td th:text="${enterprise.nit}"></td>
+      <!--<td>
         <form th:action="@{/usuario/front/{id}(id=${usuario.nombreUsuario})}" th:method="delete">
           <button type="submit">Delete</button>
         </form>
         <form th:action="@{/usuario_parametro/front/{id}(id=${usuario.nombreUsuario})}" method="get">
           <button type="submit">Edit</button>
         </form>
-      </td>
+      </td>-->
     </tr>
     </tbody>
   </table>
