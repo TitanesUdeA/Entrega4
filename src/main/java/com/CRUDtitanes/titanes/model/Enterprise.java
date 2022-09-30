@@ -3,6 +3,7 @@ package com.CRUDtitanes.titanes.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="enterprise")
@@ -28,5 +29,7 @@ public class Enterprise {
     @Column(name = "nit")
     private String nit;
 
+    @OneToMany(mappedBy="enterprise")
+    private List<MovimientoDinero> movimientoDineros;
 
 }

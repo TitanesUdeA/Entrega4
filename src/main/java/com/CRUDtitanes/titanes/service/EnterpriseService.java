@@ -1,6 +1,7 @@
 package com.CRUDtitanes.titanes.service;
 
 import com.CRUDtitanes.titanes.model.Enterprise;
+import com.CRUDtitanes.titanes.model.Usuario;
 import com.CRUDtitanes.titanes.repository.EnterpriseRepository;
 import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,13 +42,28 @@ public class EnterpriseService implements EnterpriseServiceInterface {
     @Transactional
     @Override
     public Enterprise updateEnterpriseAll(Enterprise enterprise_update, Long id) throws Exception {
-        enterpriseRepository.update(enterprise_update.getNombre(), enterprise_update.getDireccion(), enterprise_update.getTelefono(), enterprise_update.getNit());
-        return getEnterprise(id);
+        //enterpriseRepository.update(enterprise_update.getNombre(), enterprise_update.getDireccion(), enterprise_update.getTelefono(), enterprise_update.getNit(), enterprise_update.getMovimientoDineros());
+        //return getEnterprise(id);
+        return null;
     }
 
     @Override
-    public Enterprise updateEnterprise(Enterprise enterprise_update, Long id) {
-        return null;
+    public Enterprise updateEnterprise(Enterprise enterprise_update, Long id) throws Exception {
+        Enterprise enterprise_bd = getEnterprise(id);
+        if(enterprise_update.getNombre()!=null && !enterprise_update.getNombre().equals("")) {
+            enterprise_bd.setNombre(enterprise_update.getNombre());
+        }
+        if(enterprise_update.getDireccion()!=null && !enterprise_update.getDireccion().equals("")) {
+            enterprise_bd.setDireccion(enterprise_update.getDireccion());
+        }
+        if(enterprise_update.getTelefono()!=null && !enterprise_update.getTelefono().equals("")) {
+            enterprise_bd.setTelefono(enterprise_update.getTelefono());
+        }
+        if(enterprise_update.getNit()!=null && !enterprise_update.getNit().equals("")) {
+            enterprise_bd.setNit(enterprise_update.getNit());
+        }
+
+        return enterpriseRepository.save(enterprise_bd);
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface EnterpriseServiceInterface {
     public Enterprise getEnterprise(Long id) throws Exception;
     public String setEnterprise(Enterprise enterprise_parametro);
     public Enterprise updateEnterpriseAll(Enterprise enterprise_update, Long id) throws Exception;
-    public Enterprise updateEnterprise(Enterprise enterprise_update, Long id);
+    public Enterprise updateEnterprise(Enterprise enterprise_update, Long id) throws Exception;
     public String deleteEnterprise(Long id);
 
 }

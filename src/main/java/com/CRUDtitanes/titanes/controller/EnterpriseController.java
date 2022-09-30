@@ -2,6 +2,7 @@ package com.CRUDtitanes.titanes.controller;
 
 import com.CRUDtitanes.titanes.model.Enterprise;
 import com.CRUDtitanes.titanes.model.ObjetoRespuesta;
+import com.CRUDtitanes.titanes.model.Usuario;
 import com.CRUDtitanes.titanes.service.EnterpriseService;
 import com.CRUDtitanes.titanes.service.EnterpriseServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,23 +28,25 @@ public class EnterpriseController {
         enterpriseService.setEnterprise(enterprise);
     }
 
-    @PutMapping("/enterprise/{id}")
-    public ResponseEntity<ObjetoRespuesta> putEnterprise(@RequestBody Enterprise enterprise_update, @PathVariable Long id){
-        try {
-            Enterprise enterprise_bd = enterpriseService.updateEnterpriseAll(enterprise_update, id);
-            return new ResponseEntity<>(new ObjetoRespuesta("Actualización exitosa", enterprise_bd), HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity<>(new ObjetoRespuesta(e.getMessage(), null),HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+    //@PutMapping("/enterprise/{id}")
+    //public ResponseEntity<ObjetoRespuesta> putEnterprise(@RequestBody Enterprise enterprise_update, @PathVariable Long id){
+
+    //    try {
+    //        Enterprise enterprise_bd = enterpriseService.updateEnterpriseAll(enterprise_update, id);
+    //        return new ResponseEntity<>(new ObjetoRespuesta("Actualización Exitosa", enterprise_bd ),HttpStatus.ACCEPTED);
+    //    } catch (Exception e) {
+    //        return new ResponseEntity<>(new ObjetoRespuesta(e.getMessage(),null),HttpStatus.INTERNAL_SERVER_ERROR);
+    //    }
+    //}
 
     @PatchMapping("/enterprise/{id}")
     public ResponseEntity<ObjetoRespuesta> patchEnterprise(@RequestBody Enterprise enterprise_update, @PathVariable Long id){
-        try{
+
+        try {
             Enterprise enterprise_bd = enterpriseService.updateEnterprise(enterprise_update, id);
-            return new ResponseEntity<>(new ObjetoRespuesta("Actualización exitosa",enterprise_bd), HttpStatus.OK);
-        } catch (Exception e){
-            return new ResponseEntity<>(new ObjetoRespuesta(e.getMessage(), null),HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(new ObjetoRespuesta("Actualización Exitosa",enterprise_bd),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ObjetoRespuesta(e.getMessage(),null),HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

@@ -1,9 +1,7 @@
 package com.CRUDtitanes.titanes.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="usuario")
@@ -14,6 +12,11 @@ public class Usuario {
     private String nombreUsuario;
     @Column
     private String password;
+
+    @OneToMany(mappedBy="usuario")
+    private List<MovimientoDinero> movimientoDineros;
+
+
 
     public Usuario(String nombre, String nombreUsuario, String password) {
         this.nombre = nombre;

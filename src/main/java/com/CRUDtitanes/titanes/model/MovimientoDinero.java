@@ -11,20 +11,24 @@ import javax.persistence.Entity;
 @Getter
 @ToString
 
+@Table(name="transacciones")
 public class MovimientoDinero {
-    private String concept;
-    private float amount;
-    private String usuario;
-    private Long id;
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column
+    private String concept;
+    @Column
+    private float amount;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario")
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "enterprise")
+    private Enterprise enterprise;
+
+
+
 }
